@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "redirects": [
     {
-      "source": "/((?!maintenance).*)",
+      "source": "/((?!maintenance|404).*)",
       "destination": "/maintenance.html",
       "statusCode": 302
     }
