@@ -1,8 +1,5 @@
 {
-  "version": 2,
-  "rewrites": [
-    { "source": "/:slug", "destination": "/:slug.html" }
-  ]
+  "cleanUrls": true
 }
 
 
