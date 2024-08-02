@@ -1,4 +1,10 @@
 {
   "cleanUrls": true,
-  "redirects": []
+  "redirects": [
+    {
+      "source": "/((?!maintenance).*)",
+      "destination": "/maintenance.html",
+      "statusCode": 302
+    }
+  ]
 }
