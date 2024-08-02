@@ -1,12 +1,17 @@
 {
   "cleanUrls": true,
- 
-  
   "redirects": [
     {
       "source": "/((?!maintenance).*)",
       "destination": "/maintenance.html",
       "statusCode": 302
     }
-  ]
+  ],
+  "rewrites": [
+    {
+      "source": "/404",
+      "destination": "/404.html"
+    }
+  ],
+  "fallback": "/404.html"
 }
