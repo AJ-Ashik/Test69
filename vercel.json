@@ -5,6 +5,11 @@
       "source": "/((?!maintenance).*)",
       "destination": "/maintenance.html",
       "statusCode": 302
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/404.html",
+      "statusCode": 404
     }
   ]
 }
