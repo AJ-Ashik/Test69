@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StreamHub Live</title>
+    <title>StreamHub</title>
     <meta name=
   "StreamHub - Live Channel This web is that allows you to watch tv channels. Watch Online Live channels exclusively on StreamHub Live." />
   <meta name="keywords" content=
-  "bdixlive, bdixtv, bdixftp, ftp, bdtv, bdixlivetvdownload, bdixliveapk, bangladeshinews, StreamHub Live, streamhub" />
+  "bdixlive, bangladeshtv, bangladeshiptv, bd iptv, iptv, iptvlive, bd iptv, bangladesh iptv, bd live, bangladesh live, live tv, tv, live, t v, f t p, live, bdix, bdix iptv, iptv bdix, tv bdix, b d i x, i p t v, t v l i v e, l i v e, bdixtv, bdixftp, ftp, bdtv, bdixlivetvdownload, bdixliveapk, bangladeshinews, StreamHub Live, streamhub" />
     <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f1.png" sizes="16x16" type="image/png">
     <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f2.png" sizes="32x32" type="image/png">
     <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f4.png" sizes="48x48" type="image/png">
@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f6.png" sizes="180x180" type="image/png">
     <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f7.png" sizes="192x192" type="image/png">
     <!-- Other head content -->
-    <link rel="stylesheet" href="abc.css">
+    <link rel="stylesheet" href="style.css">
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <meta name="google-site-verification" content="SK2Xcy8beAGsIpAybzu4JkzNWQpLkSvKTu0jBOVIQgI" />
     <!-- Google tag (gtag.js) -->
@@ -27,110 +27,145 @@
 
   gtag('config', 'G-0HQ6C3S0J3');
 </script>
+      <link rel="stylesheet" href="kodi.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Channel List</h1>            
-            <div class="search-bar">
-                <input type="text" id="myInput" placeholder="Search" onkeyup="myFunction()">
-            </div>
+    <header>
+        <h1>StreamHub Live</h1>
+        <button id="joinButton">Join Community</button>
+    </header>
+    
+    <main>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search channels..." onkeyup="myFunction()">
+            <button id="searchButton" onclick="myFunction()">Search</button>
         </div>
-        <ul id="myUL" class="channel-list">
-            <li class="channel-item" data-url="jamunatv.html">
+        
+        <div class="filter-dropdown">
+            <select id="categoryFilter">
+                <option value="all">All</option>
+                <option value="news">News</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="kids">Kids</option>
+                <option value="sports">Sports</option>
+                <option value="music">Music</option>
+                <option value="bangla">Bangla</option>
+                <option value="hindi">Hindi</option>
+                <option value="bangladesh">Bangladesh</option>
+                <option value="kolkata">Kolkata</option>
+                <option value="international">International</option>
+            </select>
+        </div>
+        
+        <div class="channel-grid" id="channelGrid">
+            <div class="channel-item" data-categories="sports,international" onclick="goToChannel(100)">
+                <img src="https://cdn.britannica.com/01/23901-050-33507FA4/flag-Olympic-Games.jpg" alt="Olympic Live 1">
+                <p><strong>Olympic Live 1</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(101)">
+                <img src="https://tvschedule.today/_next/image?url=https%3A%2F%2Fimagesdishtvd2h.whatsonindia.com%2Fdasimages%2Fchannel%2Flandscape%2F360x270%2FL9YHhLlO.png&w=256&q=75" alt="Star Sport Select 1 HD">
+                <p><strong>Star Sports Select 1 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(102)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bA-e2LPZ_1GLFLaPA3ryRNUxDcriUD4gyuA9KQ-WgA&s" alt="Star Sport Select 2 HD">
+                <p><strong>Star Sports Select 2 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(103)">
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/e4/PTV_Sports.png" alt="PTV Sport HD">
+                <p><strong>PTV Sports HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(104)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/f/ff/Sony_Sports_Ten_3.png" alt="Sony Sport Ten 3 HD">
+                <p><strong>Sony Sports Ten 3 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(105)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/9/95/Sony_Sports_Ten_4.png" alt="Sony Sports Ten 4 HD">
+                <p><strong>Sony Sports Ten 4 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(106)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/c/cc/SS1HD.jpg" alt="Star Sport 1 HD">
+                <p><strong>Star Sports 1 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(107)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/2/2a/StarSports3India.jpg" alt="Star Sport 3 HD">
+                <p><strong>Star Sports 3 HD</strong></p>
+            </div>
+			<div class="channel-item" data-categories="news" onclick="goToChannel(108)">
+                <img src="https://i.postimg.cc/gc7nZQQh/images.png" alt="Somoy TV">
+                <p><strong>Somoy TV</strong></p>
+            </div>
+            <div class="channel-item" data-categories="news" onclick="goToChannel(109)">
                 <img src="https://i.postimg.cc/QNPhcHWy/images.webp" alt="Jamuna TV">
-             <b><a href="#">BD: Jamuna TV</a></b>
-            </li>
-            <li class="channel-item" data-url="somoytv.html">
-                <img src="https://i.postimg.cc/gc7nZQQh/images.png" alt="Somoy tv">
-                <b><a href="#">BD: Somoy TV</a></b>
-            </li>
-            <li class="channel-item" data-url="ekushey.html">
-                <img src="https://i.postimg.cc/VLb5B4PV/images-1.png" alt="Ekushey tv">
-                <b><a href="#">BD: Ekushey Television</a></b>
-            </li>
-            <li class="channel-item" data-url="discovery.html">
-                <img src="https://i.postimg.cc/4dc7SCPN/images.jpg" alt="Discovery Bangla">
-                <b><a href="#">BD: Discovery (Bangla)</a></b>
-            </li>
-            <li class="channel-item" data-url="tsport.html">
+                <p><strong>Jamuna TV</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(110)">
                 <img src="https://i.postimg.cc/cHLkRmBm/Pixahunt-9beb581fe5a734755f596f63c18670ac.webp" alt="T-Sports">
-                <b><a href="#">Sport: T-Sports</a></b>
-            </li>
-            <li class="channel-item" data-url="durontotv.html">
-                <img src="https://i.postimg.cc/LXkCFW62/Duronto-TV-Logo.png" alt="Duronto TV">
-                <b><a href="#">Kids: Duronto TV</a></b>
-            </li>
-            <li class="channel-item" data-url="nickhd+.html">
-                <img src="https://i.postimg.cc/xdvqvG1c/images-2.png" alt="Nick HD +">
-                <b><a href="#">Kids: Nick HD +</a></b>
-            </li>
-            <li class="channel-item" data-url="zeenews.html">
-                <img src="https://i.postimg.cc/ZR1Lrbwt/images.jpg" alt="Zee News">
-                <b><a href="#">IN: Zee News</a></b>
-            </li>
-            <li class="channel-item" data-url="9xm.html">
-                <img src="https://i.postimg.cc/Y23qqqvB/9xm-blue.png" alt="9XM">
-                <b><a href="#">Music: 9XM</a></b>
-            </li>
-            <li class="channel-item" data-url="zoom.html">
+                <p><strong>T-Sports</strong></p>
+            </div>
+            <div class="channel-item" data-categories="kids,bangla" onclick="goToChannel(111)">
+                <img src="https://i.postimg.cc/LXkCFW62/Duronto-TV-Logo.png" alt="Duronto">
+                <p><strong>Duronto</strong></p>
+            </div>
+            <div class="channel-item" data-categories="kids,bangla" onclick="goToChannel(112)">
+                <img src="https://i.postimg.cc/xdvqvG1c/images-2.png" alt="Nick HD+">
+                <p><strong>Nick HD+</strong></p>
+            </div>
+            <div class="channel-item" data-categories="international,news" onclick="goToChannel(113)">
+                <img src="https://i.postimg.cc/CLCDcGRh/images.png" alt="Al Jazeera">
+                <p><strong>Al Jazeera</strong></p>
+            </div>
+            <div class="channel-item" data-categories="music" onclick="goToChannel(114)">
+                <img src="https://i.postimg.cc/Y23qqqvB/9xm-blue.png" alt="9 XM">
+                <p><strong>9 XM</strong></p>
+            </div>
+            <div class="channel-item" data-categories="music" onclick="goToChannel(115)">
                 <img src="https://i.postimg.cc/zBN8895f/unnamed.jpg" alt="Zoom">
-                <b><a href="#">Music: Zoom</a></b>
-            </li>
-            <li class="channel-item" data-url="starjalsha.html">
-                <img src="https://i.postimg.cc/44BPvVYL/Star-Jalsha-logo-2023.png" alt="Star Jalsha HD">
-                <b><a href="#">BD: Star Jalsha HD</a></b>
-            </li>
-            <li class="channel-item" data-url="zeebangla.html">
-                <img src="https://i.postimg.cc/sgyw62s3/images-1.jpg" alt="Zee Bangla HD">
-                <b><a href="#">BD: Zee Bangla HD</a></b>
-            </li>
-            <li class="channel-item" data-url="cartoonnetwork.html">
+                <p><strong>Zoom</strong></p>
+            </div>
+            <div class="channel-item" data-categories="kids" onclick="goToChannel(116)">
                 <img src="https://i.postimg.cc/y6bMbcbs/images.png" alt="Cartoon Network">
-                <b><a href="#">Kids: Cartoon Network</a></b>
-            </li>
-            <li class="channel-item" data-url="sonymaxhd.html">
-                <img src="https://i.postimg.cc/N0tqxtPX/Sony-Max-new-logo.png" alt="Sony Max HD">
-                <b><a href="#">IN: Sony Max HD</a></b>
-            </li>
-            <li class="channel-item" data-url="zeecinemahd.html">
-                <img src="https://i.postimg.cc/1X7xSntf/images-1.jpg" alt="Zee Cinema HD">
-                <b><a href="#">IN: Zee Cinema HD</a></b>
-            </li>
-            <li class="channel-item" data-url="sonyyayhd.html">
+                <p><strong>Cartoon Network</strong></p>
+            </div>
+            <div class="channel-item" data-categories="kids,hindi" onclick="goToChannel(117)">
                 <img src="https://i.postimg.cc/3wG3ZBw9/images.jpg" alt="Sony YaY HD">
-                <b><a href="#">IN: Sony YaY HD</a></b>
-            </li>
-            <li class="channel-item" data-url="aljarzieahd.html">
-                <img src="https://i.postimg.cc/CLCDcGRh/images.png" alt="Al Jazeera HD">
-                <b><a href="#">News: Al Jazeera HD</a></b>
-            </li>
-            <!-- Add more channel items here -->
-        </ul>
-    </div>
-    <div class="social-media">
-            <h3>Follow Us</h3>
-            <a href="https://www.facebook.com/ajashik.27445?mibextid=ZbWKwL" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/ajashik.27445?igsh=bGhpYnF6ZGRqejB5" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me/AJ_Ashik1" class="social-icon"><i class="fab fa-telegram"></i></a>
+                <p><strong>Sony YAY HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(118)">
+                <img src="https://i.postimg.cc/1X7xSntf/images-1.jpg" alt="Zee Cinema HD">
+                <p><strong>Zee Cinema HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(119)">
+                <img src="https://i.postimg.cc/N0tqxtPX/Sony-Max-new-logo.png" alt="Sony Max HD">
+                <p><strong>Sony Max HD</strong></p>
+            </div>
+               <div class="channel-item" data-categories="music" onclick="goToChannel(120)">
+                <img src="https://feeds.abplive.com/onecms/images/uploaded-images/2021/09/30/0c781c40fc05f6f0c5731accf474aabf_original.jpg" alt="AB Mastii">
+                <p><strong>AB Mastii</strong></p>
+            </div>
+               <div class="channel-item" data-categories="music" onclick="goToChannel(121)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/7/75/Sangeet_Bangla_logo_2021.png" alt="Sangeet Bangla">
+                <p><strong>Sangeet Bangla</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(122)">
+                <img src="https://seeklogo.com/images/S/star-gold-logo-D1A2937F35-seeklogo.com.png" alt="Star Gold HD">
+                <p><strong>Star Gold HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(123)">
+                <img src="https://tvschedule.today/_next/image?url=https%3A%2F%2Fimagesdishtvd2h.whatsonindia.com%2Fdasimages%2Fchannel%2Flandscape%2F360x270%2FiwxMxXyV.png&w=256&q=75" alt="Star Gold Select HD">
+                <p><strong>Star Gold Select HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(124)">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Sony_Sab_new.png/300px-Sony_Sab_new.png" alt="Sony Max HD">
+                <p><strong>Sony Sab HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(125)">
+                <img src="https://exchange4media.gumlet.io/news-photo/127692-big-2023-05-30T131919.359.jpg" alt="Star Gold THRILLS">
+                <p><strong>Star Gold THRILLS</strong></p>
+            </div>
+            <!-- Add more channel items here as needed with appropriate data-categories -->
         </div>
-    <div id="ft-keywords">          
-            <div>
-              <a href="aboutus.html">About Us</a>
-            </div>
-            <div>
-              <a href="contactus.html">Contact Us</a>
-              </div>
-              <div>
-              <a href="privacypolicy.html">Privacy Policy</a>
-            </div>
-            <div>
-              <a href="dmca.html">DMCA</a>
-            </div>
-            </div>
-            <div id="copyright" class="text-center">
-            Copyright © 2024 StreamHub Live. All rights reserved.
-          </div>
-    <script src="abc.js"></script>
+    </main>
+
+    <script src="app.js"></script>
 </body>
-</html>
+                    </html>
