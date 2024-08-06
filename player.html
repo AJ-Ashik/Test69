@@ -105,40 +105,39 @@
 
         const videoElement = document.createElement('video');
         videoElement.controls = true;
+        videoElement.className = 'video';
         videoWrapper.appendChild(videoElement);
 
         linkContainer.appendChild(videoWrapper);
 
-        // Set initial video source
-        videoElement.src = primarySource;
-        videoElement.load();
-
-        serverSelect.onchange = function() {
-            const selectedServer = serverSelect.value;
-            const newSource = selectedServer === '1' ? primarySource : fallbackSource;
-            videoElement.src = newSource;
+        function loadVideo(source) {
+            videoElement.src = source;
             videoElement.load();
             videoElement.play().catch(error => {
                 console.error('Error playing video:', error);
                 // Optionally, show user-friendly error message
             });
+        }
+
+        loadVideo(primarySource);
+
+        serverSelect.onchange = function() {
+            const selectedServer = serverSelect.value;
+            const newSource = selectedServer === '1' ? primarySource : fallbackSource;
+            loadVideo(newSource);
         };
 
         videoElement.onerror = function() {
             console.error('Error loading video source:', videoElement.src);
             if (videoElement.src !== fallbackSource) {
-                videoElement.src = fallbackSource;
-                videoElement.load();
-                videoElement.play().catch(error => {
-                    console.error('Error playing fallback video:', error);
-                    // Optionally, show user-friendly error message
-                });
+                loadVideo(fallbackSource);
             }
         };
     } else {
         linkContainer.innerHTML = '<p class="no-channel-id">No channel ID provided.</p>';
     }
 };
+
 
     </script>
 </head>
