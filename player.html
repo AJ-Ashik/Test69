@@ -25,7 +25,7 @@
             font-size: 50px;
         }
 
-        #joinButton {
+        #joinButton, #serverSelect {
             background-color: #0088cc;
             border: none;
             color: white;
@@ -34,30 +34,34 @@
             margin-top: 10px;
             cursor: pointer;
             font-size: 1em;
+            margin: 5px;
         }
 
-        .video-container {
+        #serverSelect {
+            background-color: #005f8c;
+            border-radius: 5px;
+        }
+
+        .link-container {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            height: calc(100vh - 120px); /* Adjust height based on header and button */
+            height: calc(100vh - 120px);
+            text-align: center;
         }
 
-        .video-container video {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
+        .no-channel-id {
+            color: #ff0000;
+            font-size: 1.2em;
         }
 
-        /* Responsive Design */
         @media (max-width: 600px) {
             header h1 {
                 font-size: 1.2em;
             }
 
-            #joinButton {
+            #joinButton, #serverSelect {
                 padding: 8px 16px;
                 font-size: 0.9em;
             }
@@ -67,23 +71,36 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const channelId = urlParams.get('channel');
-            const videoElement = document.getElementById('videoPlayer');
+            const linkContainer = document.getElementById('linkContainer');
+            const serverSelect = document.getElementById('serverSelect');
 
             if (channelId) {
-                // Set primary source
                 const primarySource = `https://streamhubliveapi.vercel.app/api/${channelId}.m3u8`;
-                // Set fallback source
-                const fallbackSource = `https://streamhubliveapi.vercel.app/api/${channelId}.html`; // Adjust as needed
+                const fallbackSource = `https://streamhubliveapi.vercel.app/api/${channelId}`;
 
+                const videoElement = document.createElement('video');
+                videoElement.width = '100%';
+                videoElement.height = '100%';
+                videoElement.controls = true;
+                linkContainer.appendChild(videoElement);
+
+                // Set initial video source
                 videoElement.src = primarySource;
 
-                // Error handling to switch to fallback source
+                // Handle source change based on server selection
+                serverSelect.onchange = function() {
+                    const selectedServer = serverSelect.value;
+                    videoElement.src = selectedServer === '1' ? primarySource : fallbackSource;
+                    videoElement.load();
+                    videoElement.play();
+                };
+
                 videoElement.onerror = function() {
+                    // Fallback logic if an error occurs
                     videoElement.src = fallbackSource;
-                    videoElement.play(); // Try playing the fallback source
                 };
             } else {
-                videoElement.innerHTML = 'No channel ID provided.';
+                linkContainer.innerHTML = '<p class="no-channel-id">No channel ID provided.</p>';
             }
         };
     </script>
@@ -92,12 +109,14 @@
     <header>
         <h1>StreamHub Live</h1>
         <button id="joinButton" onclick="window.location.href='https://t.me/+s31Q__fl8zUxM2Nl';">Join Our Telegram</button>
+        <select id="serverSelect">
+            <option value="1">Server 1</option>
+            <option value="2">Server 2</option>
+        </select>
     </header>
 
-    <div class="video-container">
-        <video id="videoPlayer" controls aria-label="Video player">
-            Your browser does not support the video tag.
-        </video>
+    <div id="linkContainer" class="link-container">
+        <!-- Video will be embedded here -->
     </div>
 </body>
 </html>
