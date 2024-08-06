@@ -91,54 +91,55 @@
     </style>
     <script>
     window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const channelId = urlParams.get('channel');
-        const linkContainer = document.getElementById('linkContainer');
-        const serverSelect = document.getElementById('serverSelect');
+    const urlParams = new URLSearchParams(window.location.search);
+    const channelId = urlParams.get('channel');
+    const linkContainer = document.getElementById('linkContainer');
+    const serverSelect = document.getElementById('serverSelect');
 
-        if (channelId) {
-            const primarySource = `https://streamhubliveapi.vercel.app/api/${channelId}.m3u8`;
-            const fallbackSource = `https://streamhubliveapi.vercel.app/api/${channelId}.js`;
+    if (channelId) {
+        const primarySource = `https://streamhubliveapi.vercel.app/api/${channelId}.m3u8`;
+        const fallbackSource = `https://streamhubliveapi.vercel.app/api/${channelId}.js`;
 
-            const videoWrapper = document.createElement('div');
-            videoWrapper.className = 'video-wrapper';
+        const videoWrapper = document.createElement('div');
+        videoWrapper.className = 'video-wrapper';
 
-            const videoElement = document.createElement('video');
-            videoElement.controls = true;
-            videoWrapper.appendChild(videoElement);
+        const videoElement = document.createElement('video');
+        videoElement.controls = true;
+        videoWrapper.appendChild(videoElement);
 
-            linkContainer.appendChild(videoWrapper);
+        linkContainer.appendChild(videoWrapper);
 
-            // Set initial video source
-            videoElement.src = primarySource;
+        // Set initial video source
+        videoElement.src = primarySource;
+        videoElement.load();
+
+        serverSelect.onchange = function() {
+            const selectedServer = serverSelect.value;
+            const newSource = selectedServer === '1' ? primarySource : fallbackSource;
+            videoElement.src = newSource;
             videoElement.load();
+            videoElement.play().catch(error => {
+                console.error('Error playing video:', error);
+                // Optionally, show user-friendly error message
+            });
+        };
 
-            serverSelect.onchange = function() {
-                const selectedServer = serverSelect.value;
-                const newSource = selectedServer === '1' ? primarySource : fallbackSource;
-                videoElement.src = newSource;
+        videoElement.onerror = function() {
+            console.error('Error loading video source:', videoElement.src);
+            if (videoElement.src !== fallbackSource) {
+                videoElement.src = fallbackSource;
                 videoElement.load();
                 videoElement.play().catch(error => {
-                    console.error('Error playing video:', error);
+                    console.error('Error playing fallback video:', error);
                     // Optionally, show user-friendly error message
                 });
-            };
+            }
+        };
+    } else {
+        linkContainer.innerHTML = '<p class="no-channel-id">No channel ID provided.</p>';
+    }
+};
 
-            videoElement.onerror = function() {
-                console.error('Error loading video source');
-                if (videoElement.src !== fallbackSource) {
-                    videoElement.src = fallbackSource;
-                    videoElement.load();
-                    videoElement.play().catch(error => {
-                        console.error('Error playing fallback video:', error);
-                        // Optionally, show user-friendly error message
-                    });
-                }
-            };
-        } else {
-            linkContainer.innerHTML = '<p class="no-channel-id">No channel ID provided.</p>';
-        }
-    };
     </script>
 </head>
 <body>
