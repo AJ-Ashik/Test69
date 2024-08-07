@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamHub</title>
+    <meta name="description" content="StreamHub - Live Channel This web is that allows you to watch TV channels. Watch Online Live channels exclusively on StreamHub Live." />
+    <meta name="keywords" content="bdixlive, bangladeshtv, bangladeshiptv, bd iptv, iptv, iptvlive, bd iptv, bangladesh iptv, bd live, bangladesh live, live tv, tv, live, t v, f t p, live, bdix, bdix iptv, iptv bdix, tv bdix, b d i x, i p t v, t v l i v e, l i v e, bdixtv, bdixftp, ftp, bdtv, bdixlivetvdownload, bdixliveapk, bangladeshinews, StreamHub Live, streamhub" />
+    <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f1.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f2.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f4.png" sizes="48x48" type="image/png">
+    <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f5.png" sizes="96x96" type="image/png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f6.png" sizes="180x180" type="image/png">
+    <link rel="icon" href="https://raw.githubusercontent.com/AJ-Ashik/Text-m3u/main/img/f7.png" sizes="192x192" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="google-site-verification" content="SK2Xcy8beAGsIpAybzu4JkzNWQpLkSvKTu0jBOVIQgI" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HQ6C3S0J3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0HQ6C3S0J3');
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(to right, #3a4c8c, #5e4a8a);
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        #joinButton {
+            background-color: #0088cc;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        #searchInput {
+            width: 70%;
+            padding: 10px;
+            border-radius: 20px 0 0 20px;
+            border: none;
+        }
+        #searchButton {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+        }
+        .filter-dropdown {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #categoryFilter {
+            padding: 10px;
+            border-radius: 20px;
+        }
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .channel-item {
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .channel-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .channel-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10%;
+        }
+        @media (max-width: 768px) {
+            #searchInput {
+                width: 60%;
+            }
+        }
+        @media (max-width: 480px) {
+            #searchInput {
+                width: 50%;
+            }
+            .channel-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>StreamHub Live</h1>
+        <button id="joinButton">Join Community</button>
+    </header>
+    <main>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search channels..." onkeyup="filterChannels()">
+            <button id="searchButton" onclick="filterChannels()">Search</button>
+        </div>
+        <div class="filter-dropdown">
+            <select id="categoryFilter">
+                <option value="all">All</option>
+                <option value="news">News</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="kids">Kids</option>
+                <option value="sports">Sports</option>
+                <option value="music">Music</option>
+                <option value="bangla">Bangla</option>
+                <option value="hindi">Hindi</option>
+                <option value="bangladesh">Bangladesh</option>
+                <option value="kolkata">Kolkata</option>
+                <option value="international">International</option>
+            </select>
+        </div>
+        <div class="channel-grid" id="channelGrid">
+        	<div class="channel-item" data-categories="sports,international" onclick="goToChannel(100)">
+                <img src="https://cdn.britannica.com/01/23901-050-33507FA4/flag-Olympic-Games.jpg" alt="Olympic Live 1">
+                <p><strong>Olympic Live 1</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(101)">
+                <img src="https://tvschedule.today/_next/image?url=https%3A%2F%2Fimagesdishtvd2h.whatsonindia.com%2Fdasimages%2Fchannel%2Flandscape%2F360x270%2FL9YHhLlO.png&w=256&q=75" alt="Star Sport Select 1 HD">
+                <p><strong>Star Sports Select 1 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(102)">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bA-e2LPZ_1GLFLaPA3ryRNUxDcriUD4gyuA9KQ-WgA&s" alt="Star Sport Select 2 HD">
+                <p><strong>Star Sports Select 2 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(103)">
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/e4/PTV_Sports.png" alt="PTV Sport HD">
+                <p><strong>PTV Sports HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(104)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/f/ff/Sony_Sports_Ten_3.png" alt="Sony Sport Ten 3 HD">
+                <p><strong>Sony Sports Ten 3 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(105)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/9/95/Sony_Sports_Ten_4.png" alt="Sony Sports Ten 4 HD">
+                <p><strong>Sony Sports Ten 4 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(106)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/c/cc/SS1HD.jpg" alt="Star Sport 1 HD">
+                <p><strong>Star Sports 1 HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(107)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/2/2a/StarSports3India.jpg" alt="Star Sport 3 HD">
+                <p><strong>Star Sports 3 HD</strong></p>
+            </div>
+			<div class="channel-item" data-categories="news" onclick="goToChannel(108)">
+                <img src="https://i.postimg.cc/gc7nZQQh/images.png" alt="Somoy TV">
+                <p><strong>Somoy TV</strong></p>
+            </div>
+            <div class="channel-item" data-categories="news" onclick="goToChannel(109)">
+                <img src="https://i.postimg.cc/QNPhcHWy/images.webp" alt="Jamuna TV">
+                <p><strong>Jamuna TV</strong></p>
+            </div>
+            <div class="channel-item" data-categories="sports" onclick="goToChannel(110)">
+                <img src="https://i.postimg.cc/cHLkRmBm/Pixahunt-9beb581fe5a734755f596f63c18670ac.webp" alt="T-Sports">
+                <p><strong>T-Sports</strong></p>
+            </div>
+            <div class="channel-item" data-categories="kids,bangla" onclick="goToChannel(111)">
+                <img src="https://i.postimg.cc/LXkCFW62/Duronto-TV-Logo.png" alt="Duronto">
+                <p><strong>Duronto</strong></p>
+            </div>
+            <div class="channel-item" data-categories="kids,bangla" onclick="goToChannel(112)">
+                <img src="https://i.postimg.cc/xdvqvG1c/images-2.png" alt="Nick HD+">
+                <p><strong>Nick HD+</strong></p>
+            </div>
+            <div class="channel-item" data-categories="international,news" onclick="goToChannel(113)">
+                <img src="https://i.postimg.cc/CLCDcGRh/images.png" alt="Al Jazeera">
+                <p><strong>Al Jazeera</strong></p>
+            </div>
+            <div class="channel-item" data-categories="music" onclick="goToChannel(114)">
+                <img src="https://i.postimg.cc/Y23qqqvB/9xm-blue.png" alt="9 XM">
+                <p><strong>9 XM</strong></p>
+            </div>
+            <div class="channel-item" data-categories="music" onclick="goToChannel(115)">
+                <img src="https://i.postimg.cc/zBN8895f/unnamed.jpg" alt="Zoom">
+                <p><strong>Zoom</strong></p>
+            </div>
+            <div class="channel-item" data-categories="kids" onclick="goToChannel(116)">
+                <img src="https://i.postimg.cc/y6bMbcbs/images.png" alt="Cartoon Network">
+                <p><strong>Cartoon Network</strong></p>
+            </div>
+            <div class="channel-item" data-categories="kids,hindi" onclick="goToChannel(117)">
+                <img src="https://i.postimg.cc/3wG3ZBw9/images.jpg" alt="Sony YaY HD">
+                <p><strong>Sony YAY HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(118)">
+                <img src="https://i.postimg.cc/1X7xSntf/images-1.jpg" alt="Zee Cinema HD">
+                <p><strong>Zee Cinema HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(119)">
+                <img src="https://i.postimg.cc/N0tqxtPX/Sony-Max-new-logo.png" alt="Sony Max HD">
+                <p><strong>Sony Max HD</strong></p>
+            </div>
+               <div class="channel-item" data-categories="music" onclick="goToChannel(120)">
+                <img src="https://feeds.abplive.com/onecms/images/uploaded-images/2021/09/30/0c781c40fc05f6f0c5731accf474aabf_original.jpg" alt="AB Mastii">
+                <p><strong>AB Mastii</strong></p>
+            </div>
+               <div class="channel-item" data-categories="music" onclick="goToChannel(121)">
+                <img src="https://static.wikia.nocookie.net/logopedia/images/7/75/Sangeet_Bangla_logo_2021.png" alt="Sangeet Bangla">
+                <p><strong>Sangeet Bangla</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(122)">
+                <img src="https://seeklogo.com/images/S/star-gold-logo-D1A2937F35-seeklogo.com.png" alt="Star Gold HD">
+                <p><strong>Star Gold HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(123)">
+                <img src="https://tvschedule.today/_next/image?url=https%3A%2F%2Fimagesdishtvd2h.whatsonindia.com%2Fdasimages%2Fchannel%2Flandscape%2F360x270%2FiwxMxXyV.png&w=256&q=75" alt="Star Gold Select HD">
+                <p><strong>Star Gold Select HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(124)">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Sony_Sab_new.png/300px-Sony_Sab_new.png" alt="Sony Max HD">
+                <p><strong>Sony Sab HD</strong></p>
+            </div>
+            <div class="channel-item" data-categories="entertainment,hindi" onclick="goToChannel(125)">
+                <img src="https://exchange4media.gumlet.io/news-photo/127692-big-2023-05-30T131919.359.jpg" alt="Star Gold THRILLS">
+                <p><strong>Star Gold THRILLS</strong></p>
+            </div>
+            <!-- Channel items here -->
+        </div>
+    </main>
+    <script>
+        function goToChannel(channelId) {
+            window.location.href = `play.html?channel=${channelId}`;
+        }
+
+        function filterChannels() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toUpperCase();
+            const channelGrid = document.getElementById("channelGrid");
+            const items = channelGrid.getElementsByClassName("channel-item");
+
+            Array.from(items).forEach(item => {
+                const txtValue = item.textContent || item.innerText;
+                item.style.display = txtValue.toUpperCase().includes(filter) ? "" : "none";
+            });
+        }
+
+        document.getElementById('categoryFilter').addEventListener('change', (e) => {
+            const category = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.channel-item');
+
+            items.forEach(item => {
+                const itemCategories = item.getAttribute('data-categories') || '';
+                item.style.display = category === 'all' || itemCategories.toLowerCase().includes(category) ? '' : 'none';
+            });
+        });
+
+        document.getElementById('joinButton').addEventListener('click', function() {
+            window.location.href = 'https://t.me/+s31Q__fl8zUxM2Nl'; // Replace with your desired URL
+        });
+    </script>
+</body>
+</html>
